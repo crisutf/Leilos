@@ -2,5 +2,5 @@
 name = "leilos-web"
 compatibility_date = "2025-06-18"
 
-# For Cloudflare Pages (static site)
+# Cloudflare Pages configuration
 pages_build_output_dir = "dist"
