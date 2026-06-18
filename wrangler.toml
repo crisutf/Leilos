@@ -1,0 +1,6 @@
+#:schema node_modules/wrangler/config-schema.json
+name = "leilos-web"
+compatibility_date = "2025-06-18"
+
+# For Cloudflare Pages (static site)
+pages_build_output_dir = "dist"
