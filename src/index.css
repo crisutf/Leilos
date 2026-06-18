@@ -277,6 +277,22 @@ nav a:hover, nav a.active {
     100% { transform: translate(0) }
 }
 
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { 
+    opacity: 1; 
+    transform: scale(1); 
+  }
+  50% { 
+    opacity: 0.6; 
+    transform: scale(1.1); 
+  }
+}
+
 /* Trae Badge */
 .trae-badge {
     margin-top: 10px;
@@ -303,43 +319,274 @@ nav a:hover, nav a.active {
 }
 
 /* Responsive Design */
+@media (max-width: 900px) {
+    nav .desktop-menu {
+        display: none !important;
+    }
+    
+    nav .mobile-menu-btn {
+        display: block !important;
+    }
+}
+
+@media (min-width: 901px) {
+    nav .mobile-menu-btn {
+        display: none !important;
+    }
+}
+
+.mobile-overlay.open {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.mobile-sidebar.open {
+    right: 0 !important;
+}
+
+.mobile-sidebar ul li a,
+.mobile-sidebar ul li a:visited {
+    color: rgba(255, 255, 255, 0.85);
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.mobile-sidebar ul li a:hover {
+    background: rgba(212, 175, 55, 0.1);
+    color: #d4af37;
+}
+
+.mobile-sidebar ul li a.active {
+    background: rgba(212, 175, 55, 0.2);
+    color: #d4af37;
+}
+
+
 @media (max-width: 768px) {
     .hero h1 {
-        font-size: 2.5em; /* Smaller title */
+        font-size: 2.2em;
     }
 
     .hero p {
-        font-size: 1.1em;
-        padding: 0 10px;
-    }
-
-    nav {
-        padding: 10px 0;
-    }
-
-    nav ul {
-        gap: 10px;
-        padding: 0 10px;
+        font-size: 1.05em;
+        padding: 0 8px;
     }
 
     nav a {
-        font-size: 0.9em;
+        font-size: 1em;
         padding: 8px 12px;
     }
 
     .btn {
-        padding: 12px 25px;
-        font-size: 1em;
-        width: 100%; /* Full width buttons on mobile */
-        max-width: 300px;
+        padding: 12px 24px;
+        font-size: 0.95em;
+        width: 100%;
+        max-width: 100%;
+        margin: 5px 0;
     }
 
     .card-grid {
-        grid-template-columns: 1fr; /* Single column on mobile */
-        gap: 20px;
+        grid-template-columns: 1fr;
+        gap: 16px;
     }
 
     .container {
-        padding: 20px 15px;
+        padding: 20px 12px;
+    }
+}
+
+@media (max-width: 600px) {
+    nav {
+        padding: 12px 15px !important;
+    }
+
+    /* Home */
+    .container.hero {
+        padding: 30px 15px !important;
+    }
+
+    .container.hero .brand-script {
+        font-size: 2em !important;
+        letter-spacing: 0.03em !important;
+        margin-bottom: 12px !important;
+    }
+
+    .container.hero p {
+        font-size: 0.95em !important;
+        margin-bottom: 25px !important;
+    }
+
+    /* Player count */
+    .container.hero > div:nth-child(2) > div {
+        padding: 18px 16px !important;
+        gap: 12px !important;
+        border-radius: 16px !important;
+    }
+
+    .container.hero > div:nth-child(2) i {
+        font-size: 1.8em !important;
+    }
+
+    .container.hero > div:nth-child(2) div:last-child div:first-child {
+        font-size: 0.85em !important;
+    }
+
+    .container.hero > div:nth-child(2) div:last-child div:last-child {
+        font-size: 1.8em !important;
+    }
+
+    /* Buttons */
+    .container.hero > div:nth-child(3) {
+        gap: 8px !important;
+        margin-bottom: 30px !important;
+    }
+
+    .container.hero > div:nth-child(3) .btn {
+        width: 100%;
+        max-width: 100%;
+        margin: 4px 0;
+        padding: 12px 20px !important;
+        font-size: 0.95em !important;
+    }
+
+    /* News */
+    .container[style*="padding: 60px 20px"] {
+        padding: 25px 12px !important;
+    }
+
+    .container[style*="padding: 60px 20px"] > div:first-child {
+        margin-bottom: 25px !important;
+    }
+
+    .container[style*="padding: 60px 20px"] > div:first-child h2 {
+        font-size: 1.4em !important;
+        margin-bottom: 8px !important;
+    }
+
+    .container[style*="padding: 60px 20px"] > div:first-child p {
+        font-size: 0.9em !important;
+    }
+
+    .container[style*="padding: 60px 20px"] > div:nth-child(4) > div {
+        gap: 20px !important;
+    }
+
+    .container[style*="padding: 60px 20px"] > div:nth-child(4) > div > div {
+        padding: 16px !important;
+        border-radius: 16px !important;
+    }
+
+    .container[style*="padding: 60px 20px"] > div:nth-child(4) > div > div > div:first-child {
+        height: 130px !important;
+    }
+
+    .container[style*="padding: 60px 20px"] > div:nth-child(4) > div > div > div:nth-child(2) {
+        padding: 16px !important;
+    }
+
+    .container[style*="padding: 60px 20px"] > div:nth-child(4) > div > div > div:nth-child(2) > div:first-child {
+        flex-direction: column;
+        gap: 10px !important;
+        align-items: flex-start !important;
+    }
+
+    .container[style*="padding: 60px 20px"] > div:nth-child(4) > div > div > div:nth-child(2) > div:first-child > div:first-child {
+        width: 100%;
+    }
+
+    .container[style*="padding: 60px 20px"] > div:nth-child(4) > div > div > div:nth-child(2) > div:first-child > div:first-child span {
+        font-size: 0.8em !important;
+        padding: 5px 12px !important;
+    }
+
+    .container[style*="padding: 60px 20px"] > div:nth-child(4) > div > div > div:nth-child(2) h3 {
+        font-size: 1.15em !important;
+        margin-bottom: 8px !important;
+    }
+
+    .container[style*="padding: 60px 20px"] > div:nth-child(4) > div > div > div:nth-child(2) > div:first-child > span {
+        font-size: 0.85em !important;
+        padding: 7px 12px !important;
+    }
+
+    .container[style*="padding: 60px 20px"] > div:nth-child(4) > div > div > div:nth-child(2) > p:first-of-type {
+        font-size: 0.95em !important;
+        margin-bottom: 10px !important;
+    }
+
+    .container[style*="padding: 60px 20px"] > div:nth-child(4) > div > div > div:nth-child(2) > p:last-of-type {
+        font-size: 0.9em !important;
+        line-height: 1.6 !important;
+    }
+
+    /* Status */
+    .card-grid .card {
+        padding: 20px 18px !important;
+    }
+
+    .card-grid .card .status-indicator {
+        width: 18px !important;
+        height: 18px !important;
+    }
+
+    .card-grid .card h3 {
+        font-size: 1.05em !important;
+    }
+
+    .card-grid .card p {
+        font-size: 0.9em !important;
+    }
+
+    /* Downloads */
+    .container[style*="padding: 60px 20px"] {
+        padding: 25px 12px !important;
+    }
+
+    .container[style*="padding: 60px 20px"] .card[style*="max-width: 700px"] {
+        padding: 25px 18px !important;
+        border-radius: 16px !important;
+    }
+
+    .container[style*="padding: 60px 20px"] .card[style*="max-width: 700px"] > i {
+        font-size: 2.5em !important;
+        margin-bottom: 18px !important;
+    }
+
+    .container[style*="padding: 60px 20px"] .card[style*="max-width: 700px"] h3 {
+        font-size: 1.3em !important;
+        margin-bottom: 12px !important;
+    }
+
+    .container[style*="padding: 60px 20px"] .card[style*="max-width: 700px"] p:first-of-type {
+        font-size: 0.95em !important;
+        margin-bottom: 20px !important;
+    }
+
+    .container[style*="padding: 60px 20px"] .card[style*="max-width: 700px"] > div:nth-child(4) .btn {
+        font-size: 0.95em !important;
+        padding: 11px 22px !important;
+    }
+
+    .container[style*="padding: 60px 20px"] .card[style*="max-width: 700px"] > div:last-child {
+        padding-top: 18px !important;
+    }
+
+    .container[style*="padding: 60px 20px"] .card[style*="max-width: 700px"] > div:last-child a {
+        padding: 10px 16px !important;
+        font-size: 0.9em !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 1.5em;
+    }
+    
+    nav a {
+        padding: 7px 9px;
+    }
+
+    .brand a {
+        font-size: 1.25em !important;
     }
 }
